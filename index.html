@@ -4,85 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サービス終了のお知らせ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #ffffff;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.9;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            padding: 60px 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-        }
+
         h1 {
-            color: #d9534f;
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
+            color: #d93025;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 0 0 32px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            letter-spacing: -0.03em;
         }
+
         h2 {
-            color: #555;
-            font-size: 1.5em;
-            margin-top: 1.5em;
+            color: #222;
+            font-size: 1.35em;
+            font-weight: 700;
+            margin: 48px 0 16px;
+            padding-top: 12px;
         }
+
         p {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 1em;
+            font-size: 1.05em;
+            margin: 0 0 1.2em;
+            text-align: left;
         }
-        .date {
-            font-weight: bold;
-            color: #d9534f;
+
+        .highlight {
+            font-weight: 700;
+            color: #000;
+            background-color: #f9f9f9;
+            padding: 0 4px;
+            border-radius: 3px;
         }
-        .link-button {
-            display: inline-block;
-            background-color: #5bc0de;
-            color: white;
-            padding: 12px 24px;
-            margin-top: 20px;
-            border-radius: 6px;
+
+        .notice {
+            margin: 32px 0;
+            padding: 24px;
+            background-color: #fdf6f6;
+            border-left: 4px solid #d93025;
+            font-size: 1em;
+        }
+
+        .contact-section {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .contact-link {
+            color: #0066cc;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
         }
-        .link-button:hover {
-            background-color: #31b0d5;
+
+        .contact-link:hover {
+            text-decoration: underline;
         }
-        .contact-info {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #888;
+
+        @media (max-width: 600px) {
+            body {
+                padding: 40px 16px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.25em;
+            }
+            p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>サービス終了のお知らせ</h1>
-        <p>日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
-        <p>この度、**サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了**させていただきました。</p>
-        <p>皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
-        
-        <h2>新サーバーへの移行について</h2>
-        <p>サーバーの問題に対応するため、新たに**mi.minashin1120.com**としてサーバーを立ち上げる予定です。</p>
-        <p>現在、**新サーバーは構築・テスト中**のため、一時的にアクセスできない状態です。公開まで今しばらくお待ちください。</p>
-        <p>大変恐縮ですが、新サーバーは**新規データ**での開始となります。旧サーバーのユーザーデータは引き継げませんので、何卒ご了承ください。</p>
+    <h1>サービス終了のお知らせ</h1>
 
-        <a href="https://mi.minashin1120.com" class="link-button" target="_blank">新サーバーはこちら</a>
+    <p>日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
+    <p>この度、<span class="highlight">サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了</span>させていただきました。</p>
+    <p>皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
 
-        <div class="contact-info">
-            <p>ご不明な点がございましたら、管理者までお問い合わせください。</p>
-        </div>
+    <h2>新サーバーへの移行について</h2>
+    <p>サーバーの問題に対応するため、新たに<span class="highlight">mi.minashin1120.com</span>としてサーバーを立ち上げる予定です。</p>
+    <p>新サーバーでは、<span class="highlight">テスト環境でのテストを行い、安定性を強化し、できる限り最新バージョンを使用</span>することを徹底いたします。</p>
+
+    <div class="notice">
+        <p>現在、<span class="highlight">新サーバーは構築・テスト中</span>のため、一時的にアクセスできません。公開まで今しばらくお待ちください。</p>
+        <p>大変恐縮ですが、新サーバーは<span class="highlight">新規データでの開始</span>となります。旧サーバーのユーザーデータは引き継げませんので、何卒ご了承ください。</p>
+    </div>
+
+    <div class="contact-section">
+        <p>ご不明点・ご質問がございましたら、以下のアカウントまでお気軽にお問い合わせください：</p>
+        <p>
+            <a href="https://misskey.io/@Minashin1120" class="contact-link" target="_blank" rel="noopener">
+                misskey.io/@Minashin1120
+            </a>
+        </p>
+        <p>※ 新サーバーの公開時期や詳細については、上記アカウントにて随時ご案内いたします。</p>
     </div>
 </body>
 </html>
