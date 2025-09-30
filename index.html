@@ -7,89 +7,97 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gradient-start: #6a11cb;
-            --gradient-end: #2575fc;
+            --gradient-start: #8E2DE2;
+            --gradient-end: #4A00E0;
             --text-color: #f0f0f0;
-            --secondary-text-color: #a0a0a0;
-            --background-start: #1a1a1d;
-            --background-end: #101012;
-            --card-background: rgba(30, 30, 33, 0.85);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --highlight-bg: rgba(255, 255, 255, 0.08);
+            --secondary-text-color: #b3b3b3;
+            --background-start: #121212;
+            --background-end: #000000;
+            --highlight-bg: rgba(255, 255, 255, 0.07);
         }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            background: linear-gradient(145deg, var(--background-start), var(--background-end));
             color: var(--text-color);
-            line-height: 1.8;
+            line-height: 1.9;
             margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 80px 40px;
             min-height: 100vh;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 720px;
-            width: 100%;
-            background: var(--card-background);
-            padding: 56px;
-            border-radius: 20px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         h1 {
-            font-size: 2.2em;
+            font-size: 2.5em;
             font-weight: 700;
-            margin: 0 0 28px;
+            margin: 0 0 32px;
             text-align: center;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-fill-color: transparent;
+            animation-delay: 0.2s;
         }
 
         h2 {
-            font-size: 1.4em;
+            font-size: 1.5em;
             font-weight: 700;
-            margin: 48px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(to right, var(--gradient-start), var(--gradient-end)) 1;
+            margin: 64px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid;
+            border-image: linear-gradient(to right, var(--gradient-start), transparent) 1;
+            animation-delay: 0.8s;
         }
 
         p {
-            font-size: 1.05em;
-            margin-bottom: 1.6em;
+            font-size: 1.1em;
+            margin-bottom: 1.8em;
             color: var(--secondary-text-color);
         }
-        
-        p .highlight, .notice .highlight {
-            color: var(--text-color);
-        }
 
+        .content-wrapper > p:nth-of-type(1) { animation-delay: 0.4s; }
+        .content-wrapper > p:nth-of-type(2) { animation-delay: 0.5s; }
+        .content-wrapper > p:nth-of-type(3) { animation-delay: 0.9s; }
+        
         .highlight {
             font-weight: 500;
+            color: var(--text-color);
             background-color: var(--highlight-bg);
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 6px;
         }
 
         .notice {
-            margin: 32px 0;
-            padding: 24px;
-            background: rgba(0, 0, 0, 0.2);
-            border-left: 5px solid;
-            border-image: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end)) 1;
+            margin: 40px 0;
+            padding: 28px;
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 4px solid var(--gradient-start);
             border-radius: 8px;
+            animation-delay: 1.1s;
         }
         
         .notice p {
@@ -101,16 +109,22 @@
             margin-bottom: 16px;
         }
 
-        .contact-section {
-            margin-top: 48px;
-            padding-top: 28px;
-            border-top: 1px solid var(--card-border);
+        .separator {
             text-align: center;
+            margin: 80px 0;
+            color: var(--gradient-start);
+            letter-spacing: 0.5em;
+            animation-delay: 1.3s;
+        }
+
+        .contact-section {
+            text-align: center;
+            animation-delay: 1.4s;
         }
 
         .contact-section p {
-            font-size: 0.95em;
-            margin-bottom: 20px;
+            font-size: 1em;
+            margin-bottom: 24px;
         }
 
         .contact-link {
@@ -118,52 +132,57 @@
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            padding: 14px 28px;
-            border-radius: 10px;
+            font-size: 1.1em;
+            padding: 16px 32px;
+            border-radius: 12px;
             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
             background-size: 200% auto;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.2);
+            box-shadow: 0 4px 20px 0 rgba(142, 45, 226, 0.35);
         }
 
         .contact-link:hover {
             background-position: right center;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px 0 rgba(49, 196, 190, 0.3);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 30px 0 rgba(142, 45, 226, 0.5);
         }
 
         @media (max-width: 768px) {
             body {
-                padding: 20px 15px;
-            }
-            .container {
-                padding: 32px;
+                padding: 60px 20px;
             }
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             h2 {
-                font-size: 1.25em;
+                font-size: 1.3em;
+            }
+            p {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>重要なお知らせ</h1>
+    <div class="content-wrapper">
+        <h1 class="animated">重要なお知らせ</h1>
 
-        <p>日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
-        <p>この度、<span class="highlight">サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了</span>させていただきました。皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
+        <p class="animated">日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
+        <p class="animated">この度、<span class="highlight">サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了</span>させていただきました。皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
 
-        <h2>新サーバーへの移行について</h2>
-        <p>問題に対応するため、新たに <span class="highlight">mi.minashin1120.com</span> としてサーバーを立ち上げる予定です。新サーバーでは、<span class="highlight">安定性強化のためのテストを徹底し、可能な限り最新の環境を維持</span>してまいります。</p>
+        <h2 class="animated">新サーバーへの移行について</h2>
+        <p class="animated">問題に対応するため、新たに <span class="highlight">mi.minashin1120.com</span> としてサーバーを立ち上げる予定です。新サーバーでは、<span class="highlight">安定性強化のためのテストを徹底し、可能な限り最新の環境を維持</span>してまいります。</p>
 
-        <div class="notice">
+        <div class="notice animated">
             <p><span class="highlight">新サーバーは現在構築・テスト中</span>のため、公開まで今しばらくお待ちください。</p>
             <p>大変恐縮ですが、データは引き継がれず<span class="highlight">新規サーバーでの再スタート</span>となります。何卒ご了承ください。</p>
         </div>
 
-        <div class="contact-section">
+        <div class="separator animated">
+            ・ ・ ・
+        </div>
+
+        <div class="contact-section animated">
             <p>ご不明点や新サーバーの公開情報については、以下のアカウントにてご案内いたします。</p>
             <a href="https://misskey.io/@Minashin1120" class="contact-link" target="_blank" rel="noopener">
                 お問い合わせ (misskey.io/@Minashin1120)
