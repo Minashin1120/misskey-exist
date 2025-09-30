@@ -3,119 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サービス終了のお知らせ</title>
+    <title>サービス終了と新サーバー移行のお知らせ</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #007bff; /* プライマリーカラー（リンクなど） */
+            --primary-hover-color: #0056b3;
+            --text-color: #343a40; /* メインのテキストカラー */
+            --secondary-text-color: #6c757d; /* サブテキストカラー */
+            --background-color: #f8f9fa; /* 背景色 */
+            --card-background-color: #ffffff; /* カードの背景色 */
+            --border-color: #dee2e6; /* 境界線の色 */
+            --highlight-bg-color: #e9ecef; /* 強調部分の背景色 */
+            --notice-border-color: #ffc107; /* 注意書きの左ボーダー */
+            --notice-bg-color: #fff3cd; /* 注意書きの背景色 */
+        }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: #ffffff;
-            color: #333;
-            line-height: 1.9;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.8;
             margin: 0;
-            padding: 60px 24px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: var(--card-background-color);
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
         }
 
         h1 {
-            color: #d93025;
-            font-size: 2.2em;
+            color: var(--text-color);
+            font-size: 2em;
             font-weight: 700;
-            margin: 0 0 32px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-            letter-spacing: -0.03em;
+            margin: 0 0 24px;
+            text-align: center;
+            letter-spacing: -0.02em;
         }
 
         h2 {
-            color: #222;
-            font-size: 1.35em;
+            color: var(--text-color);
+            font-size: 1.3em;
             font-weight: 700;
-            margin: 48px 0 16px;
-            padding-top: 12px;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
         }
 
         p {
-            font-size: 1.05em;
-            margin: 0 0 1.2em;
-            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1.5em;
         }
 
         .highlight {
-            font-weight: 700;
-            color: #000;
-            background-color: #f9f9f9;
-            padding: 0 4px;
-            border-radius: 3px;
+            font-weight: 500;
+            background-color: var(--highlight-bg-color);
+            padding: 3px 6px;
+            border-radius: 4px;
         }
 
         .notice {
             margin: 32px 0;
-            padding: 24px;
-            background-color: #fdf6f6;
-            border-left: 4px solid #d93025;
-            font-size: 1em;
+            padding: 20px;
+            background-color: var(--notice-bg-color);
+            border-left: 5px solid var(--notice-border-color);
+            border-radius: 4px;
+        }
+        
+        .notice p {
+            margin: 0;
+        }
+
+        .notice p:not(:last-child) {
+            margin-bottom: 12px;
         }
 
         .contact-section {
-            margin-top: 60px;
+            margin-top: 40px;
             padding-top: 24px;
-            border-top: 1px solid #eee;
-            font-size: 0.95em;
-            color: #555;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .contact-section p {
+            color: var(--secondary-text-color);
+            font-size: 0.9em;
+            margin-bottom: 12px;
         }
 
         .contact-link {
-            color: #0066cc;
+            display: inline-block;
+            color: var(--card-background-color);
+            background-color: var(--primary-color);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .contact-link:hover {
-            text-decoration: underline;
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             body {
-                padding: 40px 16px;
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 32px;
             }
             h1 {
                 font-size: 1.8em;
             }
             h2 {
-                font-size: 1.25em;
-            }
-            p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
         }
     </style>
 </head>
 <body>
-    <h1>サービス終了のお知らせ</h1>
+    <div class="container">
+        <h1>重要なお知らせ</h1>
 
-    <p>日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
-    <p>この度、<span class="highlight">サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了</span>させていただきました。</p>
-    <p>皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
+        <p>日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
+        <p>この度、<span class="highlight">サーバーに予期せぬ問題が発生したため、予定よりも早くサービスを終了</span>させていただきました。皆様には多大なるご迷惑をおかけしますこと、深くお詫び申し上げます。</p>
 
-    <h2>新サーバーへの移行について</h2>
-    <p>サーバーの問題に対応するため、新たに<span class="highlight">mi.minashin1120.com</span>としてサーバーを立ち上げる予定です。</p>
-    <p>新サーバーでは、<span class="highlight">テスト環境でのテストを行い、安定性を強化し、できる限り最新バージョンを使用</span>することを徹底いたします。</p>
+        <h2>新サーバーへの移行について</h2>
+        <p>問題に対応するため、新たに <span class="highlight">mi.minashin1120.com</span> としてサーバーを立ち上げる予定です。新サーバーでは、<span class="highlight">安定性強化のためのテストを徹底し、可能な限り最新の環境を維持</span>してまいります。</p>
 
-    <div class="notice">
-        <p>現在、<span class="highlight">新サーバーは構築・テスト中</span>のため、一時的にアクセスできません。公開まで今しばらくお待ちください。</p>
-        <p>大変恐縮ですが、新サーバーは<span class="highlight">新規データでの開始</span>となります。旧サーバーのユーザーデータは引き継げませんので、何卒ご了承ください。</p>
-    </div>
+        <div class="notice">
+            <p><span class="highlight">新サーバーは現在構築・テスト中</span>のため、公開まで今しばらくお待ちください。</p>
+            <p>大変恐縮ですが、データは引き継がれず<span class="highlight">新規サーバーでの再スタート</span>となります。何卒ご了承ください。</p>
+        </div>
 
-    <div class="contact-section">
-        <p>ご不明点・ご質問がございましたら、以下のアカウントまでお気軽にお問い合わせください：</p>
-        <p>
+        <div class="contact-section">
+            <p>ご不明点や新サーバーの公開情報については、以下のアカウントにてご案内いたします。</p>
             <a href="https://misskey.io/@Minashin1120" class="contact-link" target="_blank" rel="noopener">
                 misskey.io/@Minashin1120
             </a>
-        </p>
-        <p>※ 新サーバーの公開時期や詳細については、上記アカウントにて随時ご案内いたします。</p>
+        </div>
     </div>
 </body>
 </html>
