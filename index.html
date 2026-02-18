@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サービス終了のお知らせ</title>
+    <title>サーバー移転とリニューアルのお知らせ</title>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Misskeyライクな配色設定 */
             --primary-pink: #ff5e78;
             --secondary-pink: #ff8fa3;
+            --accent-blue: #7baaf7;
             --text-color: #595052;
             --text-light: #8c8082;
             --glass-bg: rgba(255, 255, 255, 0.85);
@@ -28,14 +29,12 @@
             justify-content: center;
             align-items: center;
 
-            /* 修正点：色の差を減らし、なめらかなパステルグラデーションに変更 */
+            /* なめらかなパステルグラデーション */
             background: linear-gradient(300deg, #ffc3d0, #ffdfdf, #e6dffc, #dceaff);
             background-size: 300% 300%;
-            /* 修正点：時間を20秒にし、動きをよりゆっくり、滑らかに */
             animation: smoothGradient 20s ease-in-out infinite alternate;
         }
 
-        /* アニメーション：対角線上にゆったりと移動させることで自然な変化に */
         @keyframes smoothGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -48,9 +47,8 @@
             margin: 0 auto;
             padding: 50px 40px;
             
-            /* グラスモーフィズム（すりガラス） */
+            /* グラスモーフィズム */
             background: var(--glass-bg);
-            /* 境界線を少しはっきりさせてボヤけ感を防ぐ */
             border: 2px solid var(--glass-border);
             border-radius: 32px;
             box-shadow: 0 10px 40px rgba(255, 150, 150, 0.15),
@@ -59,7 +57,6 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* ポップアップアニメーション */
         @keyframes softPop {
             0% { opacity: 0; transform: scale(0.96) translateY(10px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
@@ -74,7 +71,7 @@
         .content-wrapper > p:nth-of-type(1).animated { animation-delay: 0.2s; }
         .content-wrapper > p:nth-of-type(2).animated { animation-delay: 0.3s; }
         .content-wrapper > p:nth-of-type(3).animated { animation-delay: 0.4s; }
-        .contact-section.animated { animation-delay: 0.5s; }
+        .action-section.animated { animation-delay: 0.5s; }
 
         h1 {
             font-size: 1.8em;
@@ -89,23 +86,29 @@
             font-size: 1em;
             margin-bottom: 1.6em;
             color: var(--text-light);
-            /* 読みやすさのために左揃え（スマホでは自然に見える） */
             text-align: left; 
         }
 
-        /* マーカー風ハイライト */
         .highlight {
             font-weight: 700;
             color: var(--text-color);
-            /* 蛍光ペンのような下線スタイル */
             background: linear-gradient(transparent 70%, rgba(255, 200, 210, 0.6) 70%);
             padding: 0 2px;
+        }
+
+        .domain-badge {
+            display: inline-block;
+            background: rgba(255, 94, 120, 0.1);
+            color: var(--primary-pink);
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: monospace;
         }
 
         .separator {
             border: none;
             height: 2px;
-            /* ドット線に変更して可愛らしさをプラス */
             background-image: linear-gradient(to right, #ccc 33%, rgba(255,255,255,0) 0%);
             background-position: bottom;
             background-size: 10px 2px;
@@ -114,37 +117,50 @@
             opacity: 0.5;
         }
 
-        .contact-section {
+        .action-section {
             text-align: center;
             margin-top: 20px;
         }
 
-        .contact-section p {
+        .action-section p {
             text-align: center;
             font-size: 0.9em;
             margin-bottom: 24px;
         }
 
-        .contact-link {
+        .main-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1em;
+            font-size: 1.1em;
             padding: 16px 40px;
             border-radius: 999px;
             color: #fff;
             background: var(--primary-pink);
-            /* ふんわりした影 */
             box-shadow: 0 4px 15px rgba(255, 94, 120, 0.4);
             transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .contact-link:hover {
+        .main-button:hover {
             background: var(--secondary-pink);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 94, 120, 0.5);
+        }
+
+        .secondary-link {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+
+        .secondary-link:hover {
+            color: var(--primary-pink);
+            text-decoration: underline;
         }
 
         /* レスポンシブ調整 */
@@ -155,7 +171,7 @@
             h1 {
                 font-size: 1.5em;
             }
-            .contact-link {
+            .main-button {
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -164,17 +180,22 @@
 </head>
 <body>
     <div class="content-wrapper">
-        <h1 class="animated">重要なお知らせ</h1>
+        <h1 class="animated">サーバー移転のお知らせ</h1>
 
-        <p class="animated">日頃より当Misskeyサーバーをご利用いただき、誠にありがとうございます。</p>
-        <p class="animated">この度、<span class="highlight">プロジェクト再編成に伴い、誠に勝手ながらサービスを終了</span>させていただきました。これまでの皆様からの温かいご支援とご愛顧に、心より感謝申し上げます。</p>
-        <p class="animated">なお、今後の<span class="highlight">サービス再開や、新サーバーの立ち上げ予定はございません</span>。長きにわたりご利用いただきましたこと、重ねてお礼申し上げます。</p>
+        <p class="animated">日頃より当サーバーをご利用いただき、誠にありがとうございます。</p>
+        
+        <p class="animated">この度、より快適で安定した環境を提供するため、<span class="highlight">新ドメインへの移行およびサーバーのリニューアル</span>を行うこととなりました。</p>
+        
+        <p class="animated">現在、新しい拠点となる <span class="domain-badge">mi.minashin1120.com</span> は<span class="highlight">鋭意開発中</span>です。準備が整い次第、順次サービスを公開予定ですので、今しばらくお待ちください。</p>
 
         <hr class="separator animated">
 
-        <div class="contact-section animated">
-            <p>本件に関するご不明点は、<br>以下のアカウントまでお問い合わせください。</p>
-            <a href="https://misskey.io/@Minashin1120" class="contact-link" target="_blank" rel="noopener">
+        <div class="action-section animated">
+            <p>新しいサーバーの状況確認はこちら</p>
+            <a href="https://mi.minashin1120.com" class="main-button">
+                mi.minashin1120.com へ
+            </a>
+            <a href="https://misskey.io/@Minashin1120" class="secondary-link" target="_blank" rel="noopener">
                 お問い合わせ (misskey.io)
             </a>
         </div>
